@@ -2,6 +2,19 @@
 #include<vector>
 using namespace std;
 
+/**
+ * @brief A modified binary search to return index of the greatest value that is less than or equal the target
+ *        If there is no such value, return -1
+ * @details
+ * Example: [10,11,14,15,16,21,68]  | target = 20 | low = 0, high = 6, mid = 3, ans = 3
+ *          [16,21,68]              | target = 20 | low = 4, high = 6, mid = 5, ans = 5
+ *          [16]                    | target = 20 | low = 4, high = 4, mid = 4, ans = 4
+ *          [16] break              | target = 20 | low = 5, high = 4, <------- ans = 4
+ *
+ * @param numbers is vector of number
+ * @param target is target number to search
+ * @return ans which is index of the greatest value that is less than or equal the target
+ */
 int binarySearch(vector<int> &numbers, int &target)
 {
     int low = 0, high = numbers.size() - 1;
@@ -23,6 +36,19 @@ int binarySearch(vector<int> &numbers, int &target)
     return ans;
 }
 
+/**
+ * @details 
+ * 1.) Input the input array as two vector
+ * Example: input   = [10,13,14,14,14,15,16,16,18,200]
+ *          numbers = [10,13,14,15,16,18,200]
+ *          indexes = [0,1,4,5,7,8,9]
+ * 2.) Call binarySearch() function to find a target number
+ * Example: binarySearch(numbers, 20) return 4
+ * 3.) Convert into a maximum index in actual indexes
+ * Example: numbers = [10,13,14,15,{16},18,200]             <-- index = 4
+ *          input   = [10,13,14,14,14,15,16,{16},18,200]    <-- index = 7
+ *          indexes[4] = 7
+ */
 int main()
 {
     // This makes std::cin and std::cout faster

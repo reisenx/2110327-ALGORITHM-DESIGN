@@ -3,6 +3,19 @@
 using namespace std;
 int N,M;
 
+/**
+ * @brief A modified binary search to return the greatest value that is less than or equal the target
+ *        If there is no such value, return -1
+ * @details
+ * Example: [10,11,14,15,16,21,68]  | target = 20 | low = 0, high = 6, mid = 3, ans = 15
+ *          [16,21,68]              | target = 20 | low = 4, high = 6, mid = 5, ans = 21
+ *          [16]                    | target = 20 | low = 4, high = 4, mid = 4, ans = 16
+ *          [16] break              | target = 20 | low = 5, high = 4, <------- ans = 16
+ *
+ * @param numbers is vector of number
+ * @param target is target number to search
+ * @return ans which is the greatest value that is less than or equal the target
+ */
 int binarySearch(vector<int> &numbers, int &target)
 {
     int low = 0, high = numbers.size() - 1;
