@@ -5,14 +5,15 @@ import java.util.Arrays;
 
 public class a67_q1a_abc_forbidden
 {
-    static String[] wordList;
+    static StringBuilder result = new StringBuilder();
     static int count = 0;
     
     public static void permutation(char[] word, int step, int a, int b, int c, int N, boolean[] banWords)
     {
         if (step == N) 
         {
-            wordList[count++] = new String(word);
+            result.append(word).append("\n");
+            count++;
             return;
         }
 
@@ -62,7 +63,7 @@ public class a67_q1a_abc_forbidden
             {
                 System.out.println(0);
                 return;
-            }            
+            }
 
             boolean[] banWords = new boolean[9];
 
@@ -73,17 +74,12 @@ public class a67_q1a_abc_forbidden
                 banWords[index] = true;
             }
             
-            wordList = new String[(int) Math.pow(3, N)];
-
             char[] word = new char[N];
             Arrays.fill(word, ' ');
             permutation(word, 0, a, b, c, N, banWords);
 
             System.out.println(count);
-            for (int i = 0; i < count; i++) 
-            { 
-                System.out.println(wordList[i]);
-            }
+            System.out.print(result);
         }
         catch(IOException e) {}
     }
