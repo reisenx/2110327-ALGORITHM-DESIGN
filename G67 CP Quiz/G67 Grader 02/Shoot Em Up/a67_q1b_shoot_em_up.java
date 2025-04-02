@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class a67_q1b_shoot_em_up 
 {
@@ -25,21 +26,19 @@ public class a67_q1b_shoot_em_up
         recursive(move, step + 1, current + 1);
     }
 
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        try(BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)))
-        {
-            String[] data = reader.readLine().trim().split(" ");
-            time = Integer.parseInt(data[0]);
-            ceiling = Integer.parseInt(data[1]);
-            initial = Integer.parseInt(data[2]);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-            char[] move = new char[time];
-            Arrays.fill(move, ' ');
+        StringTokenizer data = new StringTokenizer(reader.readLine());
+        time = Integer.parseInt(data.nextToken());
+        ceiling = Integer.parseInt(data.nextToken());
+        initial = Integer.parseInt(data.nextToken());
 
-            recursive(move, 0, initial);
-            System.out.print(movements);
-        }
-        catch(IOException e) {}
+        char[] move = new char[time];
+        Arrays.fill(move, ' ');
+
+        recursive(move, 0, initial);
+        System.out.print(movements);
     }
 }
